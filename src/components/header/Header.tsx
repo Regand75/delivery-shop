@@ -1,18 +1,15 @@
-import {HeaderUserBlock, LogoBlock, SearchBlock} from "@/src/components";
+import { UserBlock, LogoBlock, SearchBlock } from '@/src/components/header';
 
 const Header = () => {
-    return (
-        <header
-            className='bg-white w-full md:shadow-(--shadow-default) relative z-10 flex flex-col md:flex-row md:gap-y-5 xl:gap-y-7 md:gap-10 md:p-2 justify-center'>
-            <div className='flex flex-row gap-4 xl:gap-10 py-2 px-4 items-center shadow-(--shadow-default) md:shadow-none'>
-                <LogoBlock/>
-                <SearchBlock/>
-            </div>
-            <nav aria-label='Основное меню'>
-                <HeaderUserBlock/>
-            </nav>
-        </header>
-    );
+  return (
+    <header className="relative z-10 flex w-full flex-col justify-center bg-white md:flex-row md:gap-10 md:gap-y-5 md:p-2 md:shadow-(--shadow-default) xl:gap-y-7">
+      <div className="flex flex-row items-center gap-4 px-4 py-2 shadow-(--shadow-default) md:shadow-none xl:gap-10">
+        <LogoBlock />
+        <SearchBlock />
+      </div>
+      <UserBlock />
+    </header>
+  );
 };
 
 export default Header;

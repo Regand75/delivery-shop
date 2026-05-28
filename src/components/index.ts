@@ -1,5 +1,0 @@
-export {default as Header} from './header/Header'
-export {default as Footer} from './Footer'
-export {HeaderUserBlock} from './header/HeaderUserBlock'
-export {LogoBlock} from './header/LogoBlock'
-export {SearchBlock} from './header/SearchBlock'
