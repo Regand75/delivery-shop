@@ -1,5 +1,4 @@
-import { ButtonSearch } from '@/src/components/header';
-import { InputBlock } from '@/src/components/header';
+import { ButtonSearch, InputBlock } from '@/components/header';
 
 export const SearchBlock = () => {
   return (

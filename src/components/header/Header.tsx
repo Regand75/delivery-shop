@@ -1,4 +1,4 @@
-import { UserBlock, LogoBlock, SearchBlock } from '@/src/components/header';
+import { LogoBlock, SearchBlock, UserBlock } from '@/components/header/';
 
 const Header = () => {
   return (

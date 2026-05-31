@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Food from 'public/images/graphics/food.png';
 
 export const SlideOne = () => {
   return (
@@ -9,7 +10,7 @@ export const SlideOne = () => {
       <div className="relative z-10 flex flex-row items-center gap-x-2 xl:gap-x-4">
         <div className="relative top-7 hidden md:block md:h-33 md:w-50 xl:h-50 xl:w-75">
           <Image
-            src="/images/graphics/food.png"
+            src={Food}
             alt="Слайд"
             fill
             sizes="(max-width: 768px) 50px, (max-width: 1200px) 75px, 100px"

@@ -1,7 +1,6 @@
 'use client';
 
-import { SlideOne } from '@/src/components/slider';
-import { SlideTwo } from '@/src/components/slider';
+import { SlideOne, SlideTwo } from '@/components/slider';
 import { motion } from 'motion/react';
 
 export const Slider = () => {

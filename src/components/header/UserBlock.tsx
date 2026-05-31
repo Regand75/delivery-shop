@@ -1,5 +1,4 @@
-import { TopMenu } from '@/src/components/header';
-import { Profile } from '@/src/components/header';
+import { TopMenu, Profile } from '@/components/header';
 
 export const UserBlock = () => {
   return (
