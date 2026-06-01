@@ -7,7 +7,7 @@
       "description": "Г/Ц Блинчики с мясом вес, Россия",
       "basePrice": 89.0,
       "discountPercent": 20,
-      "rating": 4.2,
+      "rating": 4.5,
       "categories": ["actions", "food"],
       "weight": "400 г"
     },
@@ -18,7 +18,7 @@
       "description": "Молоко пастеризованное цельное",
       "basePrice": 89.0,
       "discountPercent": 15,
-      "rating": 4.5,
+      "rating": 2.7,
       "categories": ["actions", "dairy"],
       "volume": "1 л"
     },
@@ -29,7 +29,7 @@
       "description": "Колбаса сырокопченая премиум класса",
       "basePrice": 350.0,
       "discountPercent": 25,
-      "rating": 4.8,
+      "rating": 3.8,
       "categories": ["actions", "meat"],
       "weight": "500 г"
     },
