@@ -1,5 +1,5 @@
 import { Slider } from '@/components/slider';
-import { Actions } from '@/components/products';
+import { Actions, NewProducts } from '@/components/products';
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
       <Slider />
       <div className="flex flex-col gap-y-20 px-[max(12px,calc((100%-1208px)/2))] md:mb-25 xl:mb-30">
         <Actions />
+        <NewProducts />
       </div>
     </main>
   );
