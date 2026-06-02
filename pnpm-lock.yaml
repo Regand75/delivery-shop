@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@iminside/react-yandex-maps':
+        specifier: ^1.2.7
+        version: 1.2.7(react@19.2.4)
+      '@pbe/react-yandex-maps':
+        specifier: ^1.2.5
+        version: 1.2.5(react@19.2.4)
       motion:
         specifier: ^12.40.0
         version: 12.40.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -329,6 +335,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@iminside/react-yandex-maps@1.2.7':
+    resolution: {integrity: sha512-dGOp4pvl6TJawD90SHjZbi1tn5tc+LGxe3FGqPluOdDpB9rYYmhbdEHgx/dIATfBnP/5Bw/YijbDwAb2NikW4A==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: '>=16.x || ^17.x || ^18.x || ^19.x'
+
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
 
@@ -420,6 +432,12 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
+
+  '@pbe/react-yandex-maps@1.2.5':
+    resolution: {integrity: sha512-cBojin5e1fPx9XVCAqHQJsCnHGMeBNsP0TrNfpWCrPFfxb30ye+JgcGr2mn767Gbr1d+RufBLRiUcX2kaiAwjQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -537,6 +555,9 @@ packages:
 
   '@types/react@19.2.15':
     resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
+
+  '@types/yandex-maps@2.1.29':
+    resolution: {integrity: sha512-nuibRWj3RU/9KXlCzTrRtDE+n6V9l7NbT9JakicqZ5OXIdwyb6blvV2Uwn6lB58WYm3DSUDP2I2AWlnWMc8z2w==}
 
   '@typescript-eslint/eslint-plugin@8.60.0':
     resolution: {integrity: sha512-QYb/sa74/s7OKMbACMjrYnGspj9Hs5YI5aaffSL65UfeBUzVzBJfVo3oWSpbzPurvm7yaCCo2Lk7lVj610HqKw==}
@@ -2319,6 +2340,11 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
+  '@iminside/react-yandex-maps@1.2.7(react@19.2.4)':
+    dependencies:
+      '@types/yandex-maps': 2.1.29
+      react: 19.2.4
+
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -2388,6 +2414,11 @@ snapshots:
       fastq: 1.20.1
 
   '@nolyfill/is-core-module@1.0.39': {}
+
+  '@pbe/react-yandex-maps@1.2.5(react@19.2.4)':
+    dependencies:
+      '@types/yandex-maps': 2.1.29
+      react: 19.2.4
 
   '@rtsao/scc@1.1.0': {}
 
@@ -2486,6 +2517,8 @@ snapshots:
   '@types/react@19.2.15':
     dependencies:
       csstype: 3.2.3
+
+  '@types/yandex-maps@2.1.29': {}
 
   '@typescript-eslint/eslint-plugin@8.60.0(@typescript-eslint/parser@8.60.0(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)':
     dependencies:

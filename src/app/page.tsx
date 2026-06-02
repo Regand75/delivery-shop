@@ -1,5 +1,7 @@
 import { Slider } from '@/components/slider';
-import { Actions, NewProducts } from '@/components/products';
+import { Actions, NewProducts, Purchases } from '@/components/products';
+import { SpecialOffers } from '@/components/promotions';
+import { Maps } from '@/components/maps';
 
 export default function Home() {
   return (
@@ -8,6 +10,9 @@ export default function Home() {
       <div className="flex flex-col gap-y-20 px-[max(12px,calc((100%-1208px)/2))] md:mb-25 xl:mb-30">
         <Actions />
         <NewProducts />
+        <Purchases />
+        <SpecialOffers />
+        <Maps />
       </div>
     </main>
   );
