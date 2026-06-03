@@ -5,7 +5,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-//tcVW7Bh7YKUXNOtR
-
-//mongodb+srv://regandess_db_user:tcVW7Bh7YKUXNOtR@cluster0.yptkswn.mongodb.net/?appName=Cluster0
