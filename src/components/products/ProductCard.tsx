@@ -10,7 +10,7 @@ export const ProductCard = ({
   img,
   description,
   basePrice,
-  discountPercent,
+  discountPercent = 0,
   rating,
   categories,
 }: ProductCardProps) => {
@@ -32,7 +32,7 @@ export const ProductCard = ({
 
   return (
     <div className="flex w-40 flex-col justify-between overflow-hidden rounded bg-white p-0 align-top duration-300 hover:shadow-(--shadow-article) md:w-[224px] xl:w-[272px]">
-      <div className="relative h-40 w-40 md:w-[224px] xl:w-[272px]">
+      <div className="relative aspect-square h-40 w-40 md:w-[224px] xl:w-[272px]">
         <Image
           src={img}
           alt="Акция"
