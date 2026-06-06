@@ -12,7 +12,7 @@ export const Maps = () => {
     <YMaps
       query={{
         lang: 'ru_RU',
-        apikey: '26104864-454f-425b-b1eb-71d9121f1b49',
+        apikey: process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY,
         load: 'package.full',
       }}
     >
