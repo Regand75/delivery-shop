@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDB } from '@root/api-routes';
+import { getDB } from '@/utils';
 
 export async function GET() {
   try {

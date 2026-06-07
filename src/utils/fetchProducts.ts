@@ -8,7 +8,6 @@ export const fetchProductsByCategory = async (category: string) => {
       { next: { revalidate: 3600 } },
     );
     if (!res.ok) throw new Error(`Серверная ошибка получения продуктов ${category}`);
-
     const data = await res.json();
 
     if (!Array.isArray(data)) {

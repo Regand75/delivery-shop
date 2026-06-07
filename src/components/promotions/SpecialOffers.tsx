@@ -13,7 +13,7 @@ export const SpecialOffers = () => {
           </h2>
           <div className="flex flex-col items-center gap-4 md:flex-row xl:w-auto">
             {/* Баннер с картой - всегда видим */}
-            <button className="relative flex h-[170px] w-[336px] cursor-pointer flex-row overflow-hidden rounded bg-[#FCD5BA] pt-5 pl-5 text-left duration-300 hover:shadow-(--shadow-card-shop) md:w-[352px] xl:h-50 xl:w-[584px]">
+            <button className="relative flex h-[170px] w-full max-w-[336px] cursor-pointer flex-row overflow-hidden rounded bg-[#FCD5BA] pt-5 pl-5 text-left duration-300 hover:shadow-(--shadow-card-shop) md:max-w-[352px] xl:h-50 xl:max-w-[584px]">
               <div className="flex w-[174px] flex-col gap-1.5 xl:w-[258px]">
                 <p className="text-xl font-bold xl:text-2xl">Оформите карту «Северяночка»</p>
                 <p className="text-xs xl:text-base">
