@@ -1,7 +1,7 @@
 import { fetchPurchases } from '@/utils';
 import { ProductsSection } from '@/components/products';
 
-const AllUserPurchases = async () => {
+const AllPurchases = async () => {
   let purchases;
   try {
     purchases = await fetchPurchases();
@@ -18,4 +18,4 @@ const AllUserPurchases = async () => {
   );
 };
 
-export default AllUserPurchases;
+export default AllPurchases;
