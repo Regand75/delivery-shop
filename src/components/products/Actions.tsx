@@ -1,4 +1,4 @@
-import { fetchProductsByCategory } from '@/utils';
+import { fetchProductsByCategory, shuffleArray } from '@/utils';
 import { ProductsSection } from '@/components/products';
 
 export const Actions = async () => {
@@ -6,6 +6,7 @@ export const Actions = async () => {
 
   try {
     products = await fetchProductsByCategory('actions');
+    products = shuffleArray(products);
   } catch {
     return <div className="text-red-500">Ошибка: не удалось загрузить акции</div>;
   }
