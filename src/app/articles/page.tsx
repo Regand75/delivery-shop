@@ -1,26 +1,27 @@
 import type { Metadata } from 'next';
 import { fetchArticles } from '@/utils';
-import { ArticleSection } from '@/components/articles';
+import { GenericListPage } from '@/components/common';
 
 export const metadata: Metadata = {
   title: 'Статьи на сайте магазина "Северяночка"',
   description: 'Читайте статьи на сайте магазина "Северяночка"',
 };
 
-const AllArticles = async () => {
-  let articles;
-
-  try {
-    articles = await fetchArticles();
-  } catch {
-    return <div className="text-red-500">Ошибка: не удалось загрузить статьи</div>;
-  }
-
+const AllArticles = ({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string; itemsPerPage?: string }>;
+}) => {
   return (
-    <ArticleSection
-      title="Все статьи"
-      viewAllButton={{ text: 'На главную', href: '/' }}
-      articles={articles}
+    <GenericListPage
+      searchParams={searchParams}
+      props={{
+        fetchData: () => fetchArticles(),
+        pageTitle: 'Все статьи',
+        basePath: '/articles',
+        errorMessage: 'Ошибка: не удалось загрузить статьи',
+        contentType: 'articles',
+      }}
     />
   );
 };

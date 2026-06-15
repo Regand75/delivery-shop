@@ -3,4 +3,3 @@ export { Actions } from './Actions';
 export { NewProducts } from './NewProducts';
 export { Purchases } from './Purchases';
 export { ProductsSection } from './ProductsSection';
-export { GenericProductsListPage } from './GenericProductsListPage';

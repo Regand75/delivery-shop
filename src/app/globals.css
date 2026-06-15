@@ -26,6 +26,10 @@
 body {
     background-color: #fbf8ec;
     color: var(--foreground);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /*font-family: var(--font-rubik), sans-serif;*/
 }
 

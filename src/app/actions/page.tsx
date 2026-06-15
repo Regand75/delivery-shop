@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { GenericProductsListPage } from '@/components/products';
 import { fetchProductsByCategory } from '@/utils';
+import { GenericListPage } from '@/components/common';
 
 export const metadata: Metadata = {
   title: 'Акции магазина "Северяночка"',
@@ -13,7 +13,7 @@ const AllActions = async ({
   searchParams: Promise<{ page?: string; itemsPerPage?: string }>;
 }) => {
   return (
-    <GenericProductsListPage
+    <GenericListPage
       searchParams={searchParams}
       props={{
         fetchData: () => fetchProductsByCategory('actions'),

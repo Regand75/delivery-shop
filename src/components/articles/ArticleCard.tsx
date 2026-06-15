@@ -1,7 +1,7 @@
-import { Article } from '@/types/articles';
 import Image from 'next/image';
+import { ArticleCardProps } from '@/types/articlesListPageProps';
 
-export const ArticleCard = ({ img, title, createdAt, text }: Article) => {
+export const ArticleCard = ({ img, title, createdAt, text }: ArticleCardProps) => {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded bg-white shadow-(--shadow-card) duration-300 hover:shadow-(--shadow-article)">
       <div className="relative h-48 w-full">

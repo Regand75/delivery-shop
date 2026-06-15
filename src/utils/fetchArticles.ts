@@ -1,4 +1,4 @@
-import { Article } from '@/types/articles';
+import { ArticleCardProps } from '@/types/articlesListPageProps';
 
 export const fetchArticles = async () => {
   try {
@@ -13,7 +13,7 @@ export const fetchArticles = async () => {
       return [];
     }
 
-    const articles: Article[] = data;
+    const articles: ArticleCardProps[] = data;
 
     return articles;
   } catch (err) {

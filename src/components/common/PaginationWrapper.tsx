@@ -10,7 +10,7 @@ function getItemsPerPageByWidth(contentType?: string) {
   const width = window.innerWidth;
 
   if (contentType) {
-    return width < 640 ? 1 : 3;
+    return width < 640 ? 2 : 3;
   }
 
   if (width < 768) return 2;
