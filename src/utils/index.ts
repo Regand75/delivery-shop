@@ -4,3 +4,4 @@ export { fetchProductsByCategory } from './fetchProducts';
 export { fetchPurchases } from './fetchPurchases';
 export { fetchArticles } from './fetchArticles';
 export { debounce } from './debounce';
+export { PATH_TRANSLATIONS } from './pathTranslations';

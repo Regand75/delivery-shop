@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { formatPrice } from '@/utils';
-import { ProductCardProps } from '@/types/product';
+import { ProductCardProps } from '@/types';
 import IconHeart from 'public/icons-header/icon-heart.svg';
 import { StarRating } from '@/components/rating';
 

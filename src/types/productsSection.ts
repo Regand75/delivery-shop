@@ -1,8 +1,8 @@
-import { ProductCardProps } from "./product";
+import { ProductCardProps } from './product';
 
 export interface ProductsSectionProps {
   title: string;
-  viewAllButton: {
+  viewAllButton?: {
     text: string;
     href: string;
   };

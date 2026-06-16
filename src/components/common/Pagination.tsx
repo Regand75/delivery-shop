@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { PaginationProps } from '@/types/paginationProps';
+import { PaginationProps } from '@/types';
 
 const createPageUrl = (basePath: string, params: URLSearchParams, page: number) => {
   const newParams = new URLSearchParams(params);
@@ -56,8 +56,8 @@ export const Pagination = ({
   const pageButtonClass = `border border-[#ff6633] ${buttonSize}`;
 
   return (
-    <div className="md: mt-10 mb-20 flex justify-center text-base text-sm text-white">
-      <nav className="md: flex items-center gap-1 gap-2">
+    <div className="mt-10 mb-20 flex justify-center text-sm text-white md:text-base">
+      <nav className="flex items-center gap-1 md:gap-2">
         <Link
           href={createPageUrl(basePath, params, 1)}
           aria-disabled={currentPage === 1}

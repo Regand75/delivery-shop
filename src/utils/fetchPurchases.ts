@@ -1,4 +1,4 @@
-import { ProductCardProps } from '@/types/product';
+import { ProductCardProps } from '@/types';
 
 export const fetchPurchases = async () => {
   try {
