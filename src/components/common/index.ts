@@ -5,3 +5,4 @@ export { GenericListPage } from './GenericListPage';
 export { Breadcrumbs } from './Breadcrumbs';
 export { Loading } from './Loading';
 export { ErrorDisplay } from './ErrorDisplay';
+export { Loader } from './Loader';

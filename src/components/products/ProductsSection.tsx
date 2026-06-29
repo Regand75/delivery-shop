@@ -8,6 +8,7 @@ export const ProductsSection = ({
   products,
   compact = false,
 }: ProductsSectionProps) => {
+  console.log(products);
   return (
     <section>
       <div
