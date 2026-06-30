@@ -5,16 +5,27 @@ export const revalidate = 3600;
 
 export async function GET(request: Request) {
   try {
-    const category = new URL(request.url).searchParams.get('category');
+    const db = await getDB();
+    const url = new URL(request.url);
+    const category = url.searchParams.get('category');
+    const randomLimit = url.searchParams.get('randomLimit');
 
     if (!category) {
       return NextResponse.json({ message: 'Параметр категории обязателен' }, { status: 400 });
     }
 
-    const products = await (await getDB())
-      .collection('products')
-      .find({ categories: category })
-      .toArray();
+    const query = {
+      categories: category,
+      quantity: { $gt: 0 },
+    };
+
+    if (randomLimit) {
+      const pipeline = [{ $match: query }, { $sample: { size: parseInt(randomLimit) } }];
+      const products = await db.collection('products').aggregate(pipeline).toArray();
+      return NextResponse.json(products);
+    }
+
+    const products = await db.collection('products').find({ categories: category }).toArray();
     return NextResponse.json(products);
   } catch (error) {
     console.error('Ошибка сервера:', error);

@@ -1,12 +1,14 @@
-import { fetchProductsByCategory, shuffleArray } from '@/utils';
+import { fetchProductsByCategory } from '@/utils';
 import { ProductsSection } from '@/components/products';
+import { CONFIG } from '@/config';
 
 export const Actions = async () => {
-  let products;
+  let items;
 
   try {
-    products = await fetchProductsByCategory('actions');
-    products = shuffleArray(products);
+    items = await fetchProductsByCategory('actions', {
+      randomLimit: CONFIG.ITEMS_PER_PAGE_MAIN_PRODUCTS,
+    });
   } catch {
     return <div className="text-red-500">Ошибка: не удалось загрузить акции</div>;
   }
@@ -15,7 +17,7 @@ export const Actions = async () => {
     <ProductsSection
       title="Акции"
       viewAllButton={{ text: 'Все акции', href: 'actions' }}
-      products={products}
+      products={items}
       compact
     />
   );
