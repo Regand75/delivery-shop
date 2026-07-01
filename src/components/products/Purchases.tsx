@@ -15,7 +15,6 @@ export const Purchases = async () => {
       title="Покупали раньше"
       viewAllButton={{ text: 'Все покупки', href: 'purchases' }}
       products={purchases}
-      compact
     />
   );
 };

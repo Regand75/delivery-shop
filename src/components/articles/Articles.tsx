@@ -15,7 +15,6 @@ export const Articles = async () => {
       title="Статьи"
       viewAllButton={{ text: 'Все статьи', href: 'articles' }}
       articles={articles}
-      compact
     />
   );
 };
