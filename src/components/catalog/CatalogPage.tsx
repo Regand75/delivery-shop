@@ -56,7 +56,6 @@ export const CatalogPage = () => {
       const result = await response.json();
 
       if (result.success) {
-        console.log('Порядок спешно обновлен в БД');
         setInitialCategories(categories);
       }
     } catch (err) {

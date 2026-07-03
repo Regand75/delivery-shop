@@ -3,7 +3,6 @@ import { ProductCard } from '@/components/products';
 import { ProductsSectionProps } from '@/types';
 
 export const ProductsSection = ({ title, viewAllButton, products }: ProductsSectionProps) => {
-  console.log(products);
   return (
     <section>
       <div className="flex flex-col px-[max(12px,calc((100%-1208px)/2))]">

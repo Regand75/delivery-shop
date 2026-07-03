@@ -13,8 +13,8 @@ export const ArticleSection = ({ title, viewAllButton, articles }: ArticlesSecti
           )}
         </div>
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {articles.map((article, index) => (
-            <li key={article._id} className={`h-75 md:h-105 ${index >= 3 ? 'hidden' : ''}`}>
+          {articles.map((article) => (
+            <li key={article._id} className="h-75 md:h-105">
               <ArticleCard {...article} />
             </li>
           ))}

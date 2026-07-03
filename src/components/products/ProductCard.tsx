@@ -40,6 +40,7 @@ export const ProductCard = ({
           alt="Акция"
           fill
           className="object-contain"
+          priority={false}
           sizes="(max-width: 768px) 160px, (max-width: 1280px) 224px, 272px"
         />
         <button className="absolute top-2 right-2 h-8 w-8 cursor-pointer rounded bg-[#f3f2f1] p-2 opacity-50 duration-300 hover:bg-[#fcd5ba]">
