@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import iconToRight from 'public/icons-products/icon-arrow-right.svg';
-import { PATH_TRANSLATIONS } from '@/utils';
+import { TRANSLATIONS } from '@/utils';
 
 export const Breadcrumbs = () => {
   const pathname = usePathname();
@@ -16,7 +16,7 @@ export const Breadcrumbs = () => {
   const breadcrumbs = pathSegments.map((segment, index) => {
     const href = '/' + pathSegments.slice(0, index + 1).join('/');
     return {
-      label: PATH_TRANSLATIONS[segment] || segment,
+      label: TRANSLATIONS[segment] || segment,
       href,
       isLast: index === pathSegments.length - 1,
     };

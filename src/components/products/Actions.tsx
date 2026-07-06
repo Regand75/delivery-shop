@@ -1,4 +1,4 @@
-import { fetchProductsByCategory } from '@/utils';
+import { fetchProductsByTag } from '@/utils';
 import { ProductsSection } from '@/components/products';
 import { CONFIG } from '@/config';
 
@@ -6,7 +6,7 @@ export const Actions = async () => {
   let items;
 
   try {
-    ({ items } = await fetchProductsByCategory('actions', {
+    ({ items } = await fetchProductsByTag('actions', {
       randomLimit: CONFIG.ITEMS_PER_PAGE_MAIN_PRODUCTS,
     }));
   } catch {

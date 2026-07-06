@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { fetchProductsByCategory } from '@/utils';
+import { fetchProductsByTag } from '@/utils';
 import { GenericListPage } from '@/components/common';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ const AllNew = async ({
       searchParams={searchParams}
       props={{
         fetchData: ({ pagination: { startIdx, perPage } }) =>
-          fetchProductsByCategory('new', { pagination: { startIdx, perPage } }),
+          fetchProductsByTag('new', { pagination: { startIdx, perPage } }),
         pageTitle: 'Все новинки',
         basePath: '/new',
         errorMessage: 'Ошибка: не удалось загрузить новинки',

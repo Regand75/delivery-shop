@@ -6,3 +6,4 @@ export type { PaginationProps } from './paginationProps';
 export type { ProductsSectionProps } from './productsSection';
 export type { CatalogProps } from './catalog';
 export type { GridCategoryBlockProps } from './categoryBlockProps';
+export type { SearchProduct } from './searchProduct';
