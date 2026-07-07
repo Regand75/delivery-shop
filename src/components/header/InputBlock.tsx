@@ -8,8 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 import { SearchProduct } from '@/types';
 import { TRANSLATIONS } from '@/utils';
 import { HighlightText } from '@/components/common';
+import { useRouter } from 'next/navigation';
 
 export const InputBlock = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +38,6 @@ export const InputBlock = () => {
           setIsLoading(true);
           const response = await fetch(`/api/search?query=${query}`); // Проверьте наличие слэша перед api
           const data = await response.json();
-          console.log(data);
           setGroupedProducts(data);
         } catch (error) {
           console.error('Не найден продукт или категория', error);
@@ -60,27 +61,36 @@ export const InputBlock = () => {
     setQuery('');
   };
 
+  const handleSearch = () => {
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query)}`);
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className="relative min-w-[261px] flex-grow" ref={searchRef}>
       <div className="relative rounded border-1 border-(--color-primary) leading-[150%] shadow-(--shadow-button-default)">
-        <input
-          type="text"
-          value={query} // В уроке забыл добавить
-          placeholder="Найти товар"
-          className="h-10 w-full p-2 text-base text-[#8f8f8f] outline-none"
-          onFocus={handleInputFocus}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-
-        <Image
-          src={IconSearch}
-          alt="Поиск"
-          width={24}
-          height={24}
-          className="absolute top-2 right-2"
-        />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch();
+          }}
+        >
+          <input
+            type="text"
+            name="search"
+            value={query} // В уроке забыл добавить
+            placeholder="Найти товар"
+            className="h-10 w-full p-2 text-base text-[#8f8f8f] outline-none"
+            onFocus={handleInputFocus}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button type="submit" className="absolute top-2 right-2 h-6 w-6 cursor-pointer">
+            <Image src={IconSearch} alt="Поиск" width={24} height={24} />
+          </button>
+        </form>
       </div>
-
       {isOpen && (
         <div className="absolute right-0 left-0 z-100 -mt-0.5 max-h-[300px] overflow-y-auto rounded-b border-1 border-t-0 border-(--color-primary) bg-white break-words shadow-inherit">
           {isLoading ? (
