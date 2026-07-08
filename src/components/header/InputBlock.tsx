@@ -10,7 +10,11 @@ import { TRANSLATIONS } from '@/utils';
 import { HighlightText } from '@/components/common';
 import { useRouter } from 'next/navigation';
 
-export const InputBlock = () => {
+export const InputBlock = ({
+  onFocusChangeAction,
+}: {
+  onFocusChangeAction: (focused: boolean) => void;
+}) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -54,6 +58,7 @@ export const InputBlock = () => {
 
   const handleInputFocus = () => {
     setIsOpen(true);
+    onFocusChangeAction(true);
   };
 
   const resetSearch = () => {
@@ -65,7 +70,12 @@ export const InputBlock = () => {
     if (query.trim()) {
       router.push(`/search?q=${encodeURIComponent(query)}`);
       setIsOpen(false);
+      resetSearch();
     }
+  };
+
+  const handleInputBlur = () => {
+    onFocusChangeAction(false);
   };
 
   return (
@@ -85,6 +95,7 @@ export const InputBlock = () => {
             className="h-10 w-full p-2 text-base text-[#8f8f8f] outline-none"
             onFocus={handleInputFocus}
             onChange={(e) => setQuery(e.target.value)}
+            onBlur={handleInputBlur}
           />
           <button type="submit" className="absolute top-2 right-2 h-6 w-6 cursor-pointer">
             <Image src={IconSearch} alt="Поиск" width={24} height={24} />
