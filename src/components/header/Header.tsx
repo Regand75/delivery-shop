@@ -4,6 +4,7 @@ import { LogoBlock, SearchBlock, UserBlock } from '@/components/header/';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { Category } from '@/types';
+import { ErrorComponent } from '@/components/common';
 
 const Header = () => {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchBlockRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<{ error: Error; userMessage: string } | null>(null);
 
   const fetchCategories = async () => {
     if (categories.length > 0) return;
@@ -20,7 +22,10 @@ const Header = () => {
       const data = await response.json();
       setCategories(data);
     } catch (error) {
-      console.error('Ошибка загрузки категорий:', error);
+      setError({
+        error: error instanceof Error ? error : new Error('Неизвестная ошибка'),
+        userMessage: 'Не удалось изменить порядок категорий',
+      });
     } finally {
       setIsLoading(false);
     }
@@ -61,7 +66,7 @@ const Header = () => {
     >
       <div className="flex flex-row items-center gap-4 px-4 py-2 shadow-(--shadow-default) md:shadow-none xl:gap-10">
         <LogoBlock />
-        <div className="flex items-center" onMouseEnter={openMenu} ref={searchBlockRef}>
+        <div className="flex w-full items-center" onMouseEnter={openMenu} ref={searchBlockRef}>
           <SearchBlock onFocusChangeAction={handleSearchFocusAction} />
         </div>
       </div>
@@ -72,6 +77,7 @@ const Header = () => {
           className="absolute top-full left-0 z-50 hidden w-full bg-white shadow-(--shadow-catalog-menu) md:block"
         >
           <div className="mx-auto px-4 py-3">
+            {error && <ErrorComponent error={error.error} userMessage={error.userMessage} />}
             {isLoading ? (
               <div className="py-2 text-center">Загрузка...</div>
             ) : categories.length > 0 ? (

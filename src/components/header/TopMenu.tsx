@@ -3,20 +3,23 @@ import IconMenuMob from 'public/icons-header/icon-menu-mob.svg';
 import IconHeart from 'public/icons-header/icon-heart.svg';
 import IconBox from 'public/icons-header/icon-box.svg';
 import IconCart from 'public/icons-header/icon-cart.svg';
+import Link from 'next/link';
 
 export const TopMenu = () => {
   return (
     <ul className="flex flex-row items-end gap-x-6">
-      <li className="flex w-11 cursor-pointer flex-col items-center gap-2.5 md:hidden">
-        <Image
-          src={IconMenuMob}
-          alt="Меню"
-          width={24}
-          height={24}
-          className="h-6 w-6 object-contain"
-        />
-        <span>Каталог</span>
-      </li>
+      <Link href="/catalog">
+        <li className="flex w-11 cursor-pointer flex-col items-center gap-2.5 md:hidden">
+          <Image
+            src={IconMenuMob}
+            alt="Меню"
+            width={24}
+            height={24}
+            className="h-6 w-6 object-contain"
+          />
+          <span>Каталог</span>
+        </li>
+      </Link>
       <li className="flex w-11 cursor-pointer flex-col items-center gap-2.5">
         <Image
           src={IconHeart}

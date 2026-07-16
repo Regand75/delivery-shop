@@ -1,14 +1,20 @@
 import { fetchArticles } from '@/utils';
 import { ArticleSection } from '@/components/articles/ArticlesSection';
 import { CONFIG } from '@/config';
+import { ErrorComponent } from '@/components/common';
 
 export const Articles = async () => {
   let items;
 
   try {
     ({ items } = await fetchArticles({ articlesLimit: CONFIG.ITEMS_PER_PAGE_MAIN_ARTICLES }));
-  } catch {
-    return <div className="text-red-500">Ошибка: не удалось загрузить статьи</div>;
+  } catch (error) {
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось загрузить статьи"
+      />
+    );
   }
 
   return (

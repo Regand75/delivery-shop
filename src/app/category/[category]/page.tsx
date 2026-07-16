@@ -1,14 +1,17 @@
-const CategoryPage = async ({
-  params,
-}: {
-  params: Promise<{ category: string }>;
-}) => {
-  let category: string = "";
+import { ErrorComponent } from '@/components/common';
+
+const CategoryPage = async ({ params }: { params: Promise<{ category: string }> }) => {
+  let category: string = '';
 
   try {
     category = (await params).category;
   } catch (error) {
-    console.error("Ошибка получения категории:", error);
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Ошибка получения категорий"
+      />
+    );
   }
   return <div>Страница категории: {category}</div>;
 };

@@ -1,6 +1,7 @@
 import { fetchPurchases } from '@/utils';
 import { ProductsSection } from '@/components/products';
 import { CONFIG } from '@/config';
+import { ErrorComponent } from '@/components/common';
 
 export const Purchases = async () => {
   let items;
@@ -9,8 +10,13 @@ export const Purchases = async () => {
     ({ items } = await fetchPurchases({
       userPurchasesLimit: CONFIG.ITEMS_PER_PAGE_MAIN_PRODUCTS,
     }));
-  } catch {
-    return <div className="text-red-500">Ошибка: не удалось загрузить Ваши покупки</div>;
+  } catch (error) {
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось загрузить Ваши покупки"
+      />
+    );
   }
 
   return (

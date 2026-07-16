@@ -23,7 +23,6 @@ export const fetchArticles = async (options?: {
       totalCount: data.totalCount || data.length,
     };
   } catch (err) {
-    console.error(`Ошибка в компоненте статей`, err);
     throw err;
   }
 };

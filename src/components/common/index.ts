@@ -7,3 +7,4 @@ export { Loading } from './Loading';
 export { ErrorDisplay } from './ErrorDisplay';
 export { Loader } from './Loader';
 export { HighlightText } from './HighlightText';
+export { ErrorComponent } from './ErrorComponent';

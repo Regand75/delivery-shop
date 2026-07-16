@@ -1,6 +1,6 @@
 import { ProductsSection } from '@/components/products';
 import { CONFIG } from '@/config';
-import { PaginationWrapper } from '@/components/common/index';
+import { ErrorComponent, PaginationWrapper } from '@/components/common/index';
 import { ArticleSection } from '@/components/articles';
 import { ArticleCardProps, ProductCardProps, GenericListPageProps } from '@/types';
 
@@ -24,8 +24,13 @@ export const GenericListPage = async ({
   try {
     ({ items, totalCount } = await props.fetchData({ pagination: { startIdx, perPage } }));
     totalPages = Math.ceil(totalCount / perPage);
-  } catch {
-    return <div className="text-red-500">{props.errorMessage}</div>;
+  } catch (error) {
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось получить элементы пагинации"
+      />
+    );
   }
 
   return (

@@ -23,6 +23,7 @@ export const InputBlock = ({
     { category: string; products: SearchProduct[] }[]
   >([]);
   const searchRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -45,6 +46,7 @@ export const InputBlock = ({
           setGroupedProducts(data);
         } catch (error) {
           console.error('Не найден продукт или категория', error);
+          setError('Не найден продукт или категория');
         } finally {
           setIsLoading(false);
         }
@@ -104,7 +106,17 @@ export const InputBlock = ({
       </div>
       {isOpen && (
         <div className="absolute right-0 left-0 z-100 -mt-0.5 max-h-[300px] overflow-y-auto rounded-b border-1 border-t-0 border-(--color-primary) bg-white break-words shadow-inherit">
-          {isLoading ? (
+          {error ? (
+            <div className="p-2 text-sm text-red-500">
+              {error}
+              <button
+                onClick={() => setError(null)}
+                className="cursor-pointer text-blue-500 hover:text-blue-700"
+              >
+                Повторить
+              </button>
+            </div>
+          ) : isLoading ? (
             <div className="p-4 text-center">Поиск...</div>
           ) : groupedProducts.length > 0 ? (
             <div className="flex flex-col gap-2 p-2">

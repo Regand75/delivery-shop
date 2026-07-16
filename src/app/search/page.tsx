@@ -3,7 +3,7 @@
 import { ProductCardProps } from '@/types/product';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Loader } from '@/components/common';
+import { ErrorComponent, Loader } from '@/components/common';
 import { ProductsSection } from '@/components/products';
 
 const SearchResult = () => {
@@ -11,6 +11,10 @@ const SearchResult = () => {
   const query = searchParams.get('q') || '';
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<{
+    error: Error;
+    userMessage: string;
+  } | null>(null);
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -21,7 +25,10 @@ const SearchResult = () => {
         const data = await response.json();
         setProducts(data);
       } catch (error) {
-        console.error('Не удалось получить результаты', error);
+        setError({
+          error: error instanceof Error ? error : new Error('Неизвестная ошибка'),
+          userMessage: 'Не удалось загрузить результаты поиска',
+        });
       } finally {
         setIsLoading(false);
       }
@@ -33,6 +40,10 @@ const SearchResult = () => {
   }, [query]);
 
   if (isLoading) return <Loader />;
+
+  if (error) {
+    return <ErrorComponent error={error.error} userMessage={error.userMessage} />;
+  }
 
   return (
     <div className="my-20 px-[max(12px,calc((100%-1208px)/2))] text-[#414141]">

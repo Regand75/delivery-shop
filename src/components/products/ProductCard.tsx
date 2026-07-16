@@ -4,8 +4,9 @@ import { ProductCardProps } from '@/types';
 import IconHeart from 'public/icons-header/icon-heart.svg';
 import { StarRating } from '@/components/rating';
 import Link from 'next/link';
+import { CONFIG } from '@/config';
 
-const cardDiscountPercent = 6;
+const cardDiscountPercent = CONFIG.CARD_DISCOUNT_PERCENT;
 
 export const ProductCard = ({
   _id,

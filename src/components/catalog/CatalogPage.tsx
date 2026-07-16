@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { CatalogProps } from '@/types';
 import { fetchCatalog } from '@/utils';
 import { GridCategoryBlock } from '@/components/catalog';
-import { Loading } from '@/components/common';
+import { ErrorComponent, Loading } from '@/components/common';
 
 export const CatalogPage = () => {
   const [categories, setCategories] = useState<CatalogProps[]>([]);
   const [initialCategories, setInitialCategories] = useState<CatalogProps[]>([]);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<{ error: Error; userMessage: string } | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [draggedCategory, setDraggedCategory] = useState<CatalogProps | null>(null);
@@ -24,9 +24,11 @@ export const CatalogPage = () => {
         const sortedData = await fetchCatalog();
         setCategories(sortedData);
         setInitialCategories(sortedData);
-      } catch (err) {
-        console.error('Не удалось получить категории', err);
-        setError(err instanceof Error ? err : new Error('Не удалось получить категории'));
+      } catch (error) {
+        setError({
+          error: error instanceof Error ? error : new Error('Неизвестная ошибка'),
+          userMessage: 'Не удалось загрузить каталог категорий',
+        });
       } finally {
         setIsLoading(false);
       }
@@ -58,9 +60,11 @@ export const CatalogPage = () => {
       if (result.success) {
         setInitialCategories(categories);
       }
-    } catch (err) {
-      console.error('Ошибка при сохранении порядка:', err);
-      setError(err instanceof Error ? err : new Error('Ошибка при сохранении порядка'));
+    } catch (error) {
+      setError({
+        error: error instanceof Error ? error : new Error('Неизвестная ошибка'),
+        userMessage: 'Не удалось изменить порядок категорий',
+      });
     } finally {
       setIsLoading(false);
     }
@@ -145,7 +149,7 @@ export const CatalogPage = () => {
   }
 
   if (error) {
-    throw error;
+    return <ErrorComponent error={error.error} userMessage={error.userMessage} />;
   }
 
   if (!categories.length) {
@@ -158,7 +162,7 @@ export const CatalogPage = () => {
         <div className="mb-4 flex justify-end">
           <button
             onClick={handleToggleEditing}
-            className="h-10 w-1/2 cursor-pointer items-center justify-center rounded border border-(--color-primary) p-2 text-(--color-primary) transition-all duration-300 select-none hover:border-transparent hover:bg-[#ff6633] hover:text-white active:shadow-(--shadow-button-active)"
+            className="w-2/3 cursor-pointer items-center justify-center rounded border border-(--color-primary) p-2 text-sm text-(--color-primary) transition-all duration-300 select-none hover:border-transparent hover:bg-[#ff6633] hover:text-white active:shadow-(--shadow-button-active) md:h-10 md:text-base"
           >
             {isEditing ? 'Закончить редактирование' : 'Изменить расположение'}
           </button>

@@ -1,6 +1,7 @@
 import { fetchProductsByTag } from '@/utils';
 import { ProductsSection } from '@/components/products';
 import { CONFIG } from '@/config';
+import { ErrorComponent } from '@/components/common';
 
 export const NewProducts = async () => {
   let items;
@@ -9,8 +10,13 @@ export const NewProducts = async () => {
     ({ items } = await fetchProductsByTag('new', {
       randomLimit: CONFIG.ITEMS_PER_PAGE_MAIN_PRODUCTS,
     }));
-  } catch {
-    return <div className="text-red-500">Ошибка: не удалось загрузить новинки</div>;
+  } catch (error) {
+    return (
+      <ErrorComponent
+        error={error instanceof Error ? error : new Error(String(error))}
+        userMessage="Не удалось загрузить новинки"
+      />
+    );
   }
 
   return (
