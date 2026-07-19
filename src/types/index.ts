@@ -9,3 +9,5 @@ export type { GridCategoryBlockProps } from './categoryBlockProps';
 export type { SearchProduct } from './searchProduct';
 export type { Category } from './categories';
 export type { ErrorProps } from './errorProps';
+export type { SearchInputProps } from './searchInputProps';
+export type { SearchResultsProps } from './searchResultsProps';

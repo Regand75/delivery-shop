@@ -8,3 +8,4 @@ export { ErrorDisplay } from './ErrorDisplay';
 export { Loader } from './Loader';
 export { HighlightText } from './HighlightText';
 export { ErrorComponent } from './ErrorComponent';
+export { MiniLoader } from './MiniLoader';

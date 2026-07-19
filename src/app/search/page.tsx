@@ -2,9 +2,17 @@
 
 import { ProductCardProps } from '@/types/product';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { ErrorComponent, Loader } from '@/components/common';
 import { ProductsSection } from '@/components/products';
+
+const SearchPage = () => {
+  return (
+    <Suspense fallback={<Loader />}>
+      <SearchResult />
+    </Suspense>
+  );
+};
 
 const SearchResult = () => {
   const searchParams = useSearchParams();
@@ -60,4 +68,4 @@ const SearchResult = () => {
   );
 };
 
-export default SearchResult;
+export default SearchPage;

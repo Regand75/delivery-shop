@@ -6,7 +6,7 @@ export const GridCategoryBlock = ({ id, title, img }: GridCategoryBlockProps) =>
   return (
     <Link
       href={`category-${id}`}
-      className="group md:min-w-224px xl:min-w-274px relative block h-full min-w-40 overflow-hidden"
+      className="group relative block h-full min-w-40 overflow-hidden md:min-w-56 xl:min-w-68"
     >
       <Image
         src={img}
@@ -18,7 +18,7 @@ export const GridCategoryBlock = ({ id, title, img }: GridCategoryBlockProps) =>
       />
       <div className="h-117px absolute inset-0 top-auto bg-[linear-gradient(180deg,rgba(112,192,91,0)_0%,rgba(112,192,91,0.82)_82.813%)] transition-all duration-300 group-hover:h-[177px] group-hover:bg-[linear-gradient(180deg,rgba(255,102,51,0)_0%,rgba(255,102,51,1)_100%)]"></div>
       <div className="absolute right-2.5 bottom-2.5 left-2.5 flex items-center">
-        <span className="max-w-[calc(100%-10px)] text-lg font-bold break-words whitespace-normal text-white">
+        <span className="wrap-break-words max-w-[calc(100%-10px)] text-lg font-bold whitespace-normal text-white">
           {title}
         </span>
       </div>

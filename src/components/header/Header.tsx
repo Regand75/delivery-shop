@@ -4,7 +4,7 @@ import { LogoBlock, SearchBlock, UserBlock } from '@/components/header/';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { Category } from '@/types';
-import { ErrorComponent } from '@/components/common';
+import { ErrorComponent, MiniLoader } from '@/components/common';
 
 const Header = () => {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
@@ -79,7 +79,7 @@ const Header = () => {
           <div className="mx-auto px-4 py-3">
             {error && <ErrorComponent error={error.error} userMessage={error.userMessage} />}
             {isLoading ? (
-              <div className="py-2 text-center">Загрузка...</div>
+              <MiniLoader />
             ) : categories.length > 0 ? (
               <div className="grid grid-cols-2 gap-6 xl:grid-cols-4">
                 {categories.map((category) => (

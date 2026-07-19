@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { fetchArticles } from '@/utils';
-import { GenericListPage } from '@/components/common';
+import { GenericListPage, Loader } from '@/components/common';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Статьи на сайте магазина "Северяночка"',
@@ -13,17 +14,19 @@ const AllArticles = ({
   searchParams: Promise<{ page?: string; itemsPerPage?: string }>;
 }) => {
   return (
-    <GenericListPage
-      searchParams={searchParams}
-      props={{
-        fetchData: ({ pagination: { startIdx, perPage } }) =>
-          fetchArticles({ pagination: { startIdx, perPage } }),
-        pageTitle: 'Все статьи',
-        basePath: '/articles',
-        errorMessage: 'Ошибка: не удалось загрузить статьи',
-        contentType: 'articles',
-      }}
-    />
+    <Suspense fallback={<Loader />}>
+      <GenericListPage
+        searchParams={searchParams}
+        props={{
+          fetchData: ({ pagination: { startIdx, perPage } }) =>
+            fetchArticles({ pagination: { startIdx, perPage } }),
+          pageTitle: 'Все статьи',
+          basePath: '/articles',
+          errorMessage: 'Ошибка: не удалось загрузить статьи',
+          contentType: 'articles',
+        }}
+      />
+    </Suspense>
   );
 };
 
