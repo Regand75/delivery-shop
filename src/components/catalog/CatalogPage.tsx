@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CatalogProps } from '@/types';
 import { fetchCatalog } from '@/utils';
-import { GridCategoryBlock } from '@/components/catalog';
+import { CatalogAdminControls, CatalogGrid } from '@/components/catalog';
 import { ErrorComponent, Loading } from '@/components/common';
 
 export const CatalogPage = () => {
@@ -159,45 +159,25 @@ export const CatalogPage = () => {
   return (
     <section className="mx-auto mb-20 px-[max(12px,calc((100%-1208px)/2))]">
       {isAdmin && (
-        <div className="mb-4 flex justify-end">
-          <button
-            onClick={handleToggleEditing}
-            className="w-2/3 cursor-pointer items-center justify-center rounded border border-(--color-primary) p-2 text-sm text-(--color-primary) transition-all duration-300 select-none hover:border-transparent hover:bg-[#ff6633] hover:text-white active:shadow-(--shadow-button-active) md:h-10 md:text-base"
-          >
-            {isEditing ? 'Закончить редактирование' : 'Изменить расположение'}
-          </button>
-          {isEditing && (
-            <button
-              onClick={resetLayout}
-              className="ml-3 cursor-pointer items-center justify-center rounded border-none bg-[#f3f2f1] p-2 text-xs transition-colors duration-300 hover:shadow-(--shadow-button-secondary) active:shadow-(--shadow-button-active)"
-            >
-              Сбросить
-            </button>
-          )}
-        </div>
+        <CatalogAdminControls
+          isEditing={isEditing}
+          onToggleEditingAction={handleToggleEditing}
+          onResetLayoutAction={resetLayout}
+        />
       )}
       <h1 className="mb:text-5xl mb-4 flex flex-row text-4xl font-bold text-[#414141] md:mb-8 xl:mb-10 xl:text-[64px]">
         Каталог
       </h1>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-4 xl:gap-8">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className={`${category.mobileColSpan} ${category.tabletColSpan} ${category.colSpan} h-full min-h-50 overflow-hidden rounded bg-gray-100 ${isEditing ? 'border-3 border-dashed border-gray-400' : ''} ${hoveredCategoryId === category._id ? 'border-3 border-red-800' : ''}`}
-            onDragOver={(e) => handleDragOver(e, category._id)}
-            onDragLeave={handleDragLeave}
-            onDrop={(e) => handleDrop(e, category._id)}
-          >
-            <div
-              className={`h-full w-full ${draggedCategory?._id === category._id ? 'opacity-50' : ' '}`}
-              draggable={isEditing}
-              onDragStart={() => handleDragStart(category)}
-            >
-              <GridCategoryBlock id={category.id} title={category.title} img={category.img} />
-            </div>
-          </div>
-        ))}
-      </div>
+      <CatalogGrid
+        categories={categories}
+        isEditing={isEditing}
+        draggedCategory={draggedCategory}
+        hoveredCategoryId={hoveredCategoryId}
+        onDragStartAction={handleDragStart}
+        onDragOverAction={handleDragOver}
+        onDragLeaveAction={handleDragLeave}
+        onDropAction={handleDrop}
+      />
     </section>
   );
 };

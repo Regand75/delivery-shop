@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { SearchProduct } from '@/types';
 import { useRouter } from 'next/navigation';
-import { SearchInput } from '@/components/header/inputSearch/SearchInput';
-import { SearchResults } from '@/components/header/inputSearch/SearchResults';
+import { SearchInput, SearchResults } from '@/components/header';
 
 export const InputBlock = ({
   onFocusChangeAction,

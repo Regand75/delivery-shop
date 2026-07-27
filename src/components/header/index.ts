@@ -6,3 +6,7 @@ export { InputBlock } from './inputSearch/InputBlock';
 export { ButtonSearch } from './ButtonSearch';
 export { TopMenu } from './TopMenu';
 export { Profile } from './Profile';
+export { SearchInput } from './inputSearch/SearchInput';
+export { SearchResults } from './inputSearch/SearchResults';
+export { CatalogMenuWrapper } from './catalogDropMenu/CatalogMenuWrapper';
+export { CatalogMenu } from './catalogDropMenu/CatalogMenu';

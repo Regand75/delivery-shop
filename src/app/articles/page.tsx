@@ -22,7 +22,6 @@ const AllArticles = ({
             fetchArticles({ pagination: { startIdx, perPage } }),
           pageTitle: 'Все статьи',
           basePath: '/articles',
-          errorMessage: 'Ошибка: не удалось загрузить статьи',
           contentType: 'articles',
         }}
       />

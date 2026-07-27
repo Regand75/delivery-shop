@@ -11,3 +11,6 @@ export type { Category } from './categories';
 export type { ErrorProps } from './errorProps';
 export type { SearchInputProps } from './searchInputProps';
 export type { SearchResultsProps } from './searchResultsProps';
+export type { CatalogMenuProps } from './catalogMenuProps';
+export type { CatalogAdminControlsProps } from './catalogAdminControlsProps';
+export type { CatalogGridProps } from './catalogGridProps';

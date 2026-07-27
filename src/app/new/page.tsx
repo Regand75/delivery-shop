@@ -22,7 +22,6 @@ const AllNew = async ({
             fetchProductsByTag('new', { pagination: { startIdx, perPage } }),
           pageTitle: 'Все новинки',
           basePath: '/new',
-          errorMessage: 'Ошибка: не удалось загрузить новинки',
         }}
       />
     </Suspense>

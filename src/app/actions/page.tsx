@@ -22,7 +22,6 @@ const AllActions = async ({
             fetchProductsByTag('actions', { pagination: { startIdx, perPage } }),
           pageTitle: 'Все акции',
           basePath: '/actions',
-          errorMessage: 'Ошибка: не удалось загрузить акции',
         }}
       />
     </Suspense>
